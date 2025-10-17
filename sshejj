@@ -1,0 +1,63 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# -------------------------
+# Clear screen first
+# -------------------------
+clear
+
+# -------------------------
+# ASCII Logos Animation
+# -------------------------
+
+# First logo
+cat << "EOF"
+       _ _     _                 
+Shubham
+sleep 1
+clear
+
+# Second logo
+cat << "E 
+EOF
+sleep 1      
+EOF
+sleep 1
+clear
+
+# -------------------------
+# Show Credits
+# -------------------------
+
+msg1="Make By Shubham"
+# Green for msg1
+echo -e "\033[1;32m$msg1\033[0m"
+sleep 0.05
+
+# Blue for msg2
+echo -e "\033[1;34m$msg2\033[0m"
+sleep 3
+clear
+
+# -------------------------
+# Run Container
+# -------------------------
+
+RAM=15000
+CPU=4
+DISK_SIZE=100G
+CONTAINER_NAME=Shubham
+IMAGE_NAME=Shubham/debain12
+VMDATA_DIR="$PWD/vmdata"
+
+mkdir -p "$VMDATA_DIR"
+
+docker run -it --rm \
+  --name "$CONTAINER_NAME" \
+  --device /dev/kvm \
+  -v "$VMDATA_DIR":/vmdata \
+  -e RAM="$RAM" \
+  -e CPU="$CPU" \
+  -e DISK_SIZE="$DISK_SIZE" \
+  "$IMAGE_NAME"
